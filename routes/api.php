@@ -21,8 +21,6 @@ Route::post('/users/upload-image', [UserController::class, 'uploadImage'])->midd
 
 
 
-
-
 Route::middleware('auth:sanctum')->group(function () {
     route::get('/users', [UserController::class, 'index']);
     route::patch('/users/{id}', [UserController::class, 'update']);
