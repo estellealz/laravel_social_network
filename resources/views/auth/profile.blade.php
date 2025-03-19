@@ -62,15 +62,22 @@
         .profile-container button:hover {
             background-color: #8499A5;
         }
-        .logout {
-            display: block;
-            margin-top: 15px;
-            color: #480E33;
-            text-decoration: none;
-            font-weight: bold;
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 15px;
         }
-        .logout:hover {
-            text-decoration: underline;
+        .nav-links a {
+            background-color: #480E33;
+            color: #E8E0E5;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        .nav-links a:hover {
+            background-color: #8499A5;
         }
         /* Custom File Input */
         .file-upload {
@@ -112,6 +119,10 @@
 </head>
 <body>
     <div class="profile-container">
+        <div class="nav-links">
+            <a href="{{ url('/dashboard') }}">Dashboard</a>
+            <a href="{{ route('logout') }}">Se déconnecter</a>
+        </div>
         <h1>Bienvenue {{ auth()->user()->username }}</h1>
         <p><strong>Email :</strong> {{ auth()->user()->email }}</p>
         <p><strong>Bio :</strong> {{ auth()->user()->bio ?? 'Aucune bio' }}</p>
@@ -128,8 +139,6 @@
         @else
             <p>Aucune photo de profil</p>
         @endif
-
-        <a href="{{ route('logout') }}" class="logout">Se déconnecter</a>
     </div>
     
     <div class="profile-container" style="margin-top: 20px;">
@@ -140,7 +149,7 @@
                 <input type="file" name="image" required onchange="showUploadButton()">
                 <label class="file-upload-label">Choisir une image</label>
             </div>
-            <button type="submit" id="uploadButton">Téléverser Image</button>
+            <button type="submit" id="uploadButton">Upload Image</button>
         </form>
     </div>
 </body>

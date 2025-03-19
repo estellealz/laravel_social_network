@@ -107,7 +107,7 @@ class UserController extends Controller
                 ], 200);
             }
            
-            return redirect()->route('home')->with('success', 'Logged in successfully!');
+            return redirect()->route('dashboard')->with('success', 'Logged in successfully!');
         }
        
         if ($request->wantsJson()) {
