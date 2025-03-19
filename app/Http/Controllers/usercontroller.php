@@ -229,6 +229,20 @@ class UserController extends Controller
     
         return back()->with('error', 'No image uploaded');
     }
+
+    public function updateBio(Request $request)
+    {
+        $validatedData = $request->validate([
+            'bio' => 'nullable|string|max:500'
+        ]);
+
+        $user = auth()->user();
+        $user->bio = $validatedData['bio'];
+        $user->save();
+
+        return redirect()->back()->with('success', 'Votre bio a été mise à jour avec succès');
+    }
+
     
    
 }

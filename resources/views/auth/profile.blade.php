@@ -3,6 +3,12 @@
 
     <p><strong>Email :</strong> {{ auth()->user()->email }}</p>
     <p><strong>Bio :</strong> {{ auth()->user()->bio ?? 'Aucune bio' }}</p>
+    <!--modifier la Bio-->
+    <form action="{{ route('profile.update-bio') }}" method="post">
+        @csrf
+        <input type="text" name="bio" value="{{ $user->bio ?? '' }}">
+        <button type="submit">Mettre à jour</button>
+    </form>
 
     @if(auth()->user()->profile_picture)
         <p><strong>Photo de profil :</strong></p>
