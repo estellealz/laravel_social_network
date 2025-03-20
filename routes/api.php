@@ -29,6 +29,13 @@ Route::middleware('auth:sanctum')->group(function () {
     route::delete('/users/{id}', [UserController::class, 'destroy']);
     Route::get('/users/me', [UserController::class, 'me']);
     Route::post('/users/logout', [UserController::class, 'logout']);
+
+    // Post routes
+    Route::get('/posts', [PostController::class, 'index']);
+    Route::post('/posts', [PostController::class, 'createPost']);
+    Route::get('/posts/{id}', [PostController::class, 'getOnePost']);
+    Route::post('/posts/{id}', [PostController::class, 'updatePost']);
+    Route::post('/posts/{id}/delete', [PostController::class, 'deletePost']);
 });
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
