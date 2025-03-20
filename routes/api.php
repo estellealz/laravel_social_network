@@ -8,23 +8,23 @@ use App\Http\Controllers\UserController;
 | API Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
+| Here is where you can register API Routes for your application. These
+| Routes are loaded by the RouteServiceProvider within a group which
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
 
 
-route::post('/users/register', [UserController::class, 'register'])->name('api.register');
-route::post('/users/login', [UserController::class, 'login'])->name('api.login');
+Route::post('/users/register', [UserController::class, 'register'])->name('api.register');
+Route::post('/users/login', [UserController::class, 'login'])->name('api.login');
 Route::post('/users/upload-image', [UserController::class, 'uploadImage'])->middleware('auth:sanctum');
 
 
 
 Route::middleware('auth:sanctum')->group(function () {
-    route::get('/users', [UserController::class, 'index']);
-    route::patch('/users/{id}', [UserController::class, 'update']);
-    route::delete('/users/{id}', [UserController::class, 'destroy']);
+    Route::get('/users', [UserController::class, 'index']);
+    Route::patch('/users/{id}', [UserController::class, 'update']);
+    Route::delete('/users/{id}', [UserController::class, 'destroy']);
     Route::get('/users/me', [UserController::class, 'me']);
     Route::post('/users/logout', [UserController::class, 'logout']);
 });
