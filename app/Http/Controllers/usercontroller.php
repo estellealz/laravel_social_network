@@ -17,6 +17,10 @@ class UserController extends Controller
     public function showRegister() {
         return view('auth.register');
     }
+
+    public function showDashboard() {
+        return view('auth.dashboard');
+    }
  
     // public function showProfile() {
     //     return view('auth.profile');
@@ -103,7 +107,7 @@ class UserController extends Controller
                 ], 200);
             }
            
-            return redirect()->route('profile')->with('success', 'Logged in successfully!');
+            return redirect()->route('dashboard')->with('success', 'Logged in successfully!');
         }
        
         if ($request->wantsJson()) {

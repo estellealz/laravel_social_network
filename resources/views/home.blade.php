@@ -27,11 +27,19 @@
                     text-align: center;
                     border-radius: 10px;
                 }
+                .nav-container {
+                    display: flex;
+                    justify-content: flex-end;
+                    gap: 15px;
+                    padding: 10px;
+                }
                 .nav-link {
                     padding: 10px 15px;
                     border-radius: 5px;
                     transition: all 0.3s ease;
                     color: #E8E0E5;
+                    text-decoration: none;
+                    background-color: #480E33;
                 }
                 .nav-link:hover {
                     background-color: #8499A5;
@@ -58,28 +66,14 @@
     <body class="bg-[#E8E0E5] text-[#480E33] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col">
         <header class="w-full lg:max-w-4xl max-w-[335px] text-sm mb-6 not-has-[nav]:hidden">
             @if (Route::has('login'))
-                <nav class="flex items-center justify-end gap-4">
+                <nav class="nav-container">
                     @auth
-                        <a
-                            href="{{ url('/dashboard') }}"
-                            class="nav-link"
-                        >
-                            Dashboard
-                        </a>
+                        <a href="{{ url('/dashboard') }}" class="nav-link">Dashboard</a>
+                        <a href="{{ route('logout') }}" class="nav-link">Se déconnecter</a>
                     @else
-                        <a
-                            href="{{ route('login') }}"
-                            class="nav-link"
-                        >
-                            Log in
-                        </a>
-
+                        <a href="{{ route('login') }}" class="nav-link">Log in</a>
                         @if (Route::has('register'))
-                            <a
-                                href="{{ route('register') }}"
-                                class="nav-link">
-                                Register
-                            </a>
+                            <a href="{{ route('register') }}" class="nav-link">Register</a>
                         @endif
                     @endauth
                 </nav>

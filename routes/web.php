@@ -21,3 +21,6 @@ Route::middleware('auth')->group(function() {
     Route::get('/profile', [UserController::class, 'profile'])->name('profile');
     Route::get('/logout', [UserController::class, 'webLogout'])->name('logout');
 });
+
+Route::get('/dashboard', [UserController::class, 'showDashboard'])->name('dashboard')->middleware('auth');
+
