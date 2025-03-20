@@ -14,8 +14,6 @@ Route::get('/register', [UserController::class, 'showRegister'])->name('register
 Route::post('/register', [UserController::class, 'register'])->name('register.submit');
 Route::post('/upload-image', [UserController::class, 'uploadImage'])->middleware('auth');
 
-
- 
 // Protected routes
 Route::middleware('auth')->group(function() {
     Route::get('/profile', [UserController::class, 'profile'])->name('profile');
